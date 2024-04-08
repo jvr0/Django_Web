@@ -1,0 +1,97 @@
+{% extends "core/base.html" %}
+
+{% block title%}Blog{%endblock%}
+
+{%block background%}{%load static%}{% static 'core/img/blog-bg.jpg' %}{%endblock%}
+
+{%block headers%}
+<h1>Blog</h1>
+<span class="subheading"></span>
+{%endblock%}
+
+
+<!-- Contenido -->
+{% block content %}
+    <script>
+        function mostrarVentanaEmergente() {
+        // Obtener la referencia al elemento de la ventana emergente
+        var ventanaEmergente = document.getElementById('ventanaEmergente');
+
+        // Mostrar la ventana emergente
+        ventanaEmergente.style.display = 'block';
+        }
+
+        function cerrarVentanaEmergente() {
+        // Obtener la referencia al elemento de la ventana emergente
+        var ventanaEmergente = document.getElementById('ventanaEmergente');
+
+        // Ocultar la ventana emergente
+        ventanaEmergente.style.display = 'none';
+        }
+    </script>
+    <style>
+        /* Estilo para la ventana emergente */
+        #ventanaEmergente {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fafafa;
+        height: 800px;
+        width: 1000px;
+        padding: 30px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        z-index: 9999; /* Asegura que la ventana emergente esté por encima del resto del contenido */
+        white-space: pre-line;
+        }
+        /* Estilos para el botón emergente*/
+        .custom-button {
+            background-color: transparent; /* Color de fondo */
+            color: #585757; /* Color del texto */
+            border: none; /* Sin borde */
+            cursor: pointer; /* Cambia el cursor a una mano al pasar el mouse */
+            border-radius: 5px; /* Borde redondeado */
+        }
+        .custom-button:hover {
+            color: #000000; /* Color del texto */
+        }
+        /* Estilo para el botón de cerrar */
+        .cerrar-ventana {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 50px;
+            font-family: Arial, sans-serif;
+            color: #585757;
+        }
+        .cerrar-ventana:hover {
+            color: #eb1212;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+    
+    {% for blog in blogs%}
+        <!-- Proyecto -->
+        <div class="row project">        
+            <div class="col-lg-3 col-md-4 offset-lg-1">
+                <img class="img-fluid" src="{{blog.image.url}}" alt="">
+            </div>
+            <div class="col-lg-7 col-md-8">
+                <!-- Se agregó la clase "custom-button" al botón -->
+                <button class="custom-button" onclick="mostrarVentanaEmergente()"><h2 class="section-heading title">{{blog.title}}</h2></button>
+                {% if blog.url %}
+                    <p><a href="{{blog.url}}">LinkedIn</a></p>
+                {% endif %}
+                <!-- Elemento HTML para la ventana emergente -->
+                <div id="ventanaEmergente">
+                    <div class="cerrar-ventana" onclick="cerrarVentanaEmergente()">X</div>
+                    <h2 class="section-heading title">{{blog.title}}</h2> 
+                    <p>{{blog.description}}</p>
+                </div>
+            </div>
+    {% endfor %}
+{% endblock %}

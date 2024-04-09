@@ -6,44 +6,108 @@
 
 {%block headers%}
 <h1>Acerca de</h1>
-<span class="subheading">Biografía</span>
+<span class="subheading">Joaquín Villaverde</span>
 {%endblock%}
 
 
 <!-- Contenido -->
 {% block content %}
-<div class="row">
-  <div class="col-lg-3 col-md-4 offset-lg-1">
-      <img class="img-fluid avatar" src="{% static 'core/img/avatar.jpg' %}" alt="">
-          </div>
-              <div class="col-lg-7 col-md-8">
-                  <h2 class="section-heading">Joaquín</h2>
-
-        <h3>Nivel Personal</h3>
-        <p>Mis rasgos personales y lo más importante sobre mí.</p>
-        <h3>Nivel Laboral</h3>
-        <p>Cómo me comporto en el trabajo y las cosas chulísimas que puedo hacer</p>
-        <h3>Nivel Social</h3>
-        <p>Mis aficiones y mis vainas míticas (básicamente ir al bar y hacer el gilipollas)</p>
-        <h3>Mi sello de calidad</h3>
-       
-        <h4>Libros</h4> 
-        {%for book in books%}
-          <div class="row book">
-            <div class="col-lg-3 col-md-4 offset-lg-1">
-              <img class="img-fluid" src="{{book.image.url}}" alt="">
-            </div>
-          <div class="col-lg-7 col-md-8">
-            <h4 class="section-heading title">{{project.title}}</h4>   
-            <p>{{book.author}}</p>
-            <p>{{book.genre}}</p>
-            {% if book.url %}
-              <p><a href= "{{book.url}}" > Más información </a></p>
-            {% endif %}
-          </div>
-          </div>
-        {% endfor %}
+  <div class="row">
+      <div class="col-lg-3 col-md-4 offset-lg-1">
+          <img class="img-fluid avatar" src="{% static 'core/img/avatar.jpg' %}" alt="">
+      </div>
+      <div class="col-lg-8 col-md-8">
+          <h3>Nivel Personal</h3>
+          <p>Mis rasgos personales y lo más importante sobre mí.</p>
+          <h3>Habilidades y Herramientas...</h3>
+          <p><b>- Languages:</b> Python / HTML</p>
+          <p><b>- Analysis:</b> Pandas / PySpark / Matplotlib / Numpy / Scikit-Learn / </p>
+          <p><b>- Development:</b> Django / Streamlit / Tkinter / Pygame</p>
+          <p><b>- Extraction:</b> Requests / Beautiful Soup / Selenium</p>
+          <p><b>- Data Bases:</b> MySQL / SQLlite / PostgreSQL / MongoDB</p>
+          <p><b>- Tools:</b> PowerBI / Tableau / DBeaver / MongoDB Atlas</p>
+      </div>
   </div>
-</div>
 
-{% endblock %}
+<!-- Contenido -->
+  <p> </p>
+  <h3>Mis gustos...</h3>
+  <h4>Libros</h4> 
+  <div class="row"> <!-- Añadido para contener las columnas de los libros -->
+      {% for book in books %}
+      <div class="col-lg-4 col-md-4"> <!-- Cada libro ocupa 4 columnas en dispositivos grandes y medianos -->
+          <div class="row book"> <!-- Contenedor para cada libro -->
+              <div class="col-12"> <!-- La imagen del libro ocupa todas las 12 columnas en todos los dispositivos -->
+                  <img class="img-fluid" src="{{ book.image.url }}" alt="">
+              </div>
+              <div class="col-12"> <!-- La información del libro ocupa todas las 12 columnas en todos los dispositivos -->
+                  <p>{{ book.title }}</p>
+                  <p>{{ book.author }}</p>
+                  {% if book.url %}
+                  <p><a href="{{ book.url }}"> Más información </a></p>
+                  {% endif %}
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+
+  <h4>Películas</h4> 
+  <div class="row"> <!-- Añadido para contener las columnas de las películas -->
+      {% for film in films %}
+      <div class="col-lg-4 col-md-4"> <!-- Cada película ocupa 4 columnas en dispositivos grandes y medianos -->
+          <div class="row movie"> <!-- Contenedor para cada película -->
+              <div class="col-12"> <!-- La imagen de la película ocupa todas las 12 columnas en todos los dispositivos -->
+                  <img class="img-fluid" src="{{ film.image.url }}" alt="">
+              </div>
+              <div class="col-12"> <!-- La información de la película ocupa todas las 12 columnas en todos los dispositivos -->
+                  <p>{{ film.title }}</p>
+                  {% if film.url %}
+                  <p><a href="{{ film.url }}"> Más información </a></p>
+                  {% endif %}
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+
+  <h4>Series TV</h4> 
+  <div class="row"> <!-- Añadido para contener las columnas de las Series -->
+      {% for show in shows %}
+      <div class="col-lg-4 col-md-4"> <!-- Cada película ocupa 4 columnas en dispositivos grandes y medianos -->
+          <div class="row show"> <!-- Contenedor para cada serie -->
+              <div class="col-12"> <!-- La imagen de la serie ocupa todas las 12 columnas en todos los dispositivos -->
+                  <img class="img-fluid" src="{{ show.image.url }}" alt="">
+              </div>
+              <div class="col-12"> <!-- La información de la serie ocupa todas las 12 columnas en todos los dispositivos -->
+                  <p>{{ show.title }}</p>
+                  {% if show.url %}
+                  <p><a href="{{ show.url }}"> Más información </a></p>
+                  {% endif %}
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+
+  <h4>Música</h4> 
+  <div class="row"> <!-- Añadido para contener las columnas de la Música -->
+      {% for music in musics %}
+      <div class="col-lg-4 col-md-4"> <!-- Cada Música ocupa 4 columnas en dispositivos grandes y medianos -->
+          <div class="row music"> <!-- Contenedor para cada canción -->
+              <div class="col-12"> <!-- La imagen de la canción ocupa todas las 12 columnas en todos los dispositivos -->
+                  <img class="img-fluid" src="{{ music.image.url }}" alt="">
+              </div>
+              <div class="col-12"> <!-- La información de la canción ocupa todas las 12 columnas en todos los dispositivos -->
+                  <p>{{ music.title }}</p>
+                  <p>{{ music.artist }}</p>
+                  <p>{{ music.genre }}</p>
+                  {% if music.url %}
+                  <p><a href="{{ film.url }}"> Más información </a></p>
+                  {% endif %}
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+  {% endblock %}

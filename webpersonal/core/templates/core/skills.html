@@ -1,0 +1,26 @@
+{% extends "core/base.html" %}
+
+{% block title%}Skills{%endblock%}
+
+{%block background%}{%load static%}{% static 'core/img/skills-bg.jpg' %}{%endblock%}
+
+{%block headers%}
+<h1>Habilidades y Herramientas</h1>
+<span class="subheading"></span>
+{%endblock%}
+
+
+<!-- Contenido -->
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+        <h3>Habilidades y Herramientas...</h3>
+        <p><b>- Languages:</b> Python / HTML</p>
+        <p><b>- Analysis:</b> Pandas / PySpark / Matplotlib / Numpy / Scikit-Learn / </p>
+        <p><b>- Development:</b> Django / Streamlit / Tkinter / Pygame</p>
+        <p><b>- Extraction:</b> Requests / Beautiful Soup / Selenium</p>
+        <p><b>- Data Bases:</b> MySQL / SQLlite / PostgreSQL / MongoDB</p>
+        <p><b>- Tools:</b> PowerBI / Tableau / DBeaver / MongoDB Atlas</p>
+    </div>
+</div>
+{% endblock %}

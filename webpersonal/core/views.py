@@ -6,3 +6,6 @@ def home(request):
     
 def contact(request):
     return render(request, "core/contact.html")
+
+def skills(request):
+    return render(request, "core/skills.html")

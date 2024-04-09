@@ -25,6 +25,7 @@ from django.conf import settings
 urlpatterns = [
     path('', core_views.home, name='Home'),
     path('about/', about_views.about, name='About'),
+    path('skills/', core_views.skills, name="Skills"),
     path('portfolio/', porftolio_views.portfolio, name='Portfolio'),
     path('contact/', core_views.contact, name='Contact'),
     path('blog/', blog_views.blog, name='Blog'),
